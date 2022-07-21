@@ -32,12 +32,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'smart_selects',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'complaint',
+    'account',
+
+    # third party app
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +125,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+JQUERY_URL = False
+USE_DJANGO_JQUERY = True
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
