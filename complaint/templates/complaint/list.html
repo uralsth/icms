@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}ICMS | Complaints{% endblock %}
+
+{% block content %}
+<h1>Complaints</h1>
+{% for complaint in complaints %}
+<h2>
+  <a href="{{ complaint.get_absolute_url }}">{{ complaint.title }}</a>
+</h2>
+<p>
+  Issued complaint {{ complaint.created }} by {{ complaint.complainant }}
+</p>
+{{ complaint.complain|truncatewords:30|linebreaks }}
+{% endfor %}
+{% endblock %}

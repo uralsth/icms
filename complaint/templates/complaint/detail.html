@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}ICMS | {{ complaint.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ complaint.title }}</h1>
+<p>
+  Issued complaint {{ complaint.created }} by {{ complaint.author }}
+</p>
+{{ complaint.complain|linebreaks }}
+{% endblock %}
