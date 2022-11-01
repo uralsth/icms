@@ -21,18 +21,6 @@ class Department(models.Model):
         return self.name
 
 
-# class Staff(models.Model):
-#     name = models.CharField(max_length=150)
-#     available = models.BooleanField(default=False)
-#     department = models.ForeignKey(
-#         Department, on_delete=models.CASCADE, related_name="of_department"
-#     )
-#     created = models.DateTimeField(auto_now_add=True)
-
-#     def __str__(self):
-#         return self.name
-
-
 class Complaint(models.Model):
     STATUS_CHOICES = (
         ("pending", "Pending"),
@@ -43,7 +31,7 @@ class Complaint(models.Model):
         "account.ComplainantProfile", on_delete=models.CASCADE, related_name="complainant"
     )
     title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=250, default="noslug", unique_for_date="created")
+    slug = models.SlugField(max_length=250, unique_for_date="created")
     complain = models.TextField()
     department = models.ForeignKey(
         Department, on_delete=models.CASCADE, related_name="to_department"
