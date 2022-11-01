@@ -56,11 +56,14 @@ class Staff(CustomUser):
 
 
 class StaffProfile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(Staff, on_delete=models.CASCADE)
     available = models.BooleanField(default=False)
     department = models.ForeignKey(
         Department, on_delete=models.CASCADE, related_name="of_department", null=True, blank=True)
     # staff_id = models.IntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
 
 @receiver(post_save, sender=Staff)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -87,8 +90,10 @@ class Complainant(CustomUser):
 
 
 class ComplainantProfile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    # complainant_id = models.IntegerField(null=True, blank=True)
+    user = models.OneToOneField(Complainant, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
 
 @receiver(post_save, sender=Complainant)
 def create_user_profile(sender, instance, created, **kwargs):
